@@ -1,0 +1,45 @@
+class Rectangle:
+    def __init__(self, width, height):
+        self._width = width
+        self._height = height
+
+    def set_width(self, width):
+        self._width = width
+
+    def set_height(self, height):
+        self._height = height
+
+    def get_width(self):
+        return self._width
+
+    def get_height(self):
+        return self._height
+
+    def area(self):
+        return self._width * self._height
+
+class Square(Rectangle):
+    def __init__(self, side):
+        super().__init__(side, side)
+
+    def set_width(self, width):
+        self._width = width
+        self._height = width
+
+    def set_height(self, height):
+        self._width = height
+        self._height = height
+
+
+def resize_rectangle(rect: Rectangle):
+    rect.set_width(10)
+    rect.set_height(20)
+    assert rect.area() == 200, "Area should be 200"
+
+
+if __name__ == '__main__':
+    rect = Rectangle(2, 3)
+    resize_rectangle(rect)  # Це працює правильно
+
+    square = Square(5)
+    resize_rectangle(square)  # Це призведе до помилки
